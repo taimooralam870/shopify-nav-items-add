@@ -1,0 +1,25 @@
+{
+"type": "link_list",
+"id": "link", 
+"label": "Image Show and hide"
+}
+<div class="absolute left-[400px] h-[600px] top-0 pt-[60px] hidden links ">
+              {% assign selected_linklist = linklists[block.settings.link] %}
+              {% if selected_linklist %}
+                {% for link in selected_linklist.links %}
+                  <div class="py-2 font-[600] text-[20px] barlow hover:underline cursor-pointer hover:text-red-600  focus:text-red-600">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </div>
+                  {% if link.links %}
+                    <ul>
+                      {% for sublink in link.links %}
+                        <div class="pl-6 py-2 font-[600] barlow hover:underline cursor-pointer hover:text-red-600  focus:text-red-600">
+                          <li><a href="{{ sublink.url }}">{{ sublink.title }}</a> </li>
+                        </div> 
+                       
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
